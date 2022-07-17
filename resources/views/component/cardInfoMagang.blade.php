@@ -101,12 +101,12 @@
 </style>
 @endsection
 
-    <div class="row">
-        <div class="col-md-6 col-12 text-md-start text-center">
+    <div class="row py-4 shadow rounded">
+        <div class="col-md-6 col-12 text-md-start text-center pt-3">
             <span>Cari Magang</span>
             <div class="dropdown d-inline">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Semua Kota
+                <button class="btn btn-info dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Semua Kota
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Jakarta</a>
@@ -117,7 +117,7 @@
         </div>
         <div class="col-md-6 col-12 text-md-end text-center"> 
             <a style="text-decoration: none;" href="<?php echo e(route('infomagangdetail')); ?>">
-                <button type="button" class="btn btn-outline-primary mx-4">Lihat semua</button>
+                <button type="button" class="btn btn-outline-info mx-4">Lihat semua</button>
             </a>
             <div class="pagination-custome"></div>
         </div>

@@ -101,11 +101,11 @@
 </style>
 @endsection
 
-    <div class="row">
+    <div class="row py-4 shadow rounded" style="background: whitesmoke;">
         <div class="col-md-3 col-12 text-md-start text-center">
             <span>Cari Magang</span>
             <div class="dropdown d-inline">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-info dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Semua Kota
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -118,7 +118,7 @@
         <div class="col-md-3 col-12 text-md-start text-center">
             <span>Jenis Perusahaan</span>
             <div class="dropdown d-inline">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-info dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 IT
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

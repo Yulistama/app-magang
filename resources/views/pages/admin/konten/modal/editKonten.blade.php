@@ -129,12 +129,12 @@
       <div class="modal-footer" style="margin: auto;">
         <div class="row">
           <div class="col-12" id="display-next-edit" style="display: ''">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-            <button type="button" class="btn btn-primary" id="btn-next-edit">Selanjutnya</button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="button" class="btn btn-info text-white" id="btn-next-edit">Selanjutnya</button>
           </div>
           <div class="col-12" id="display-prev-edit" style="display: none;">
-            <button type="button" class="btn btn-secondary" id="btn-prev-edit">Sebelumnya</button>
-            <button type="button" class="btn btn-primary">Simpan</button>
+            <button type="button" class="btn btn-outline-secondary" id="btn-prev-edit">Sebelumnya</button>
+            <button type="button" class="btn btn-info text-white">Simpan</button>
           </div>
         </div>
       </div>

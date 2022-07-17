@@ -38,7 +38,7 @@
                     <input type="password" class="form-control" id="passwordLogin" placeholder="Password">
                 </div>
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <button class="btn btn-primary btn-lg mt-3" type="button">Masuk</button>
+                    <button class="btn btn-info text-white btn-lg mt-3" type="button">Masuk</button>
                 </div>
             </div>
             <!-- e.login mhs -->
@@ -56,7 +56,7 @@
                     <input type="password" class="form-control" id="passwordLogin" placeholder="Password">
                 </div>
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <button class="btn btn-primary btn-lg mt-3" type="button">Masuk</button>
+                    <button class="btn btn-info text-white btn-lg mt-3" type="button">Masuk</button>
                 </div>
             </div>
             <!-- e.login perusahan -->

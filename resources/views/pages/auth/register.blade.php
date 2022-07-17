@@ -30,7 +30,7 @@
                     <input type="password" class="form-control" id="formKUlangiEmail" placeholder="Ulangi Password">
                 </div>
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <button class="btn btn-primary btn-lg mt-3" type="button">Daftar</button>
+                    <button class="btn btn-info text-white btn-lg mt-3" type="button">Daftar</button>
                 </div>
     
             </div>

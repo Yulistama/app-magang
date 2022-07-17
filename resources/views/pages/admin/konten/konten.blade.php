@@ -180,7 +180,7 @@
                     </div>
 
                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                      <button type="submit" class="btn btn-info text-white">Simpan</button>
                     </div>
                   </form><!-- End Profile Edit Form -->
 
@@ -196,7 +196,7 @@
                 <div class="row mt-5 mb-4">
                     <div class="col-12">
                         <h5 class="card-title me-3 ms-2" style="display: inline;">Data Jobs</h5>
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambahKontenModal">+ Tambah Konten</button>
+                        <button class="btn btn-info text-white" type="button" data-bs-toggle="modal" data-bs-target="#tambahKontenModal">+ Tambah Konten</button>
                     </div>
                     <!-- <div class="mt-3 col-10">
                     </div> -->

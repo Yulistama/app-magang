@@ -114,7 +114,7 @@
                             <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto mt-4">
-                            <button class="btn btn-primary" type="button">Ajukan Magang</button>
+                            <button class="btn btn-info text-white" type="button">Ajukan Magang</button>
                         </div>
                       </div>
                     </div>
@@ -159,7 +159,7 @@
                             <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto mt-4">
-                            <button class="btn btn-primary" type="button">Ajukan Magang</button>
+                            <button class="btn btn-info text-white" type="button">Ajukan Magang</button>
                         </div>
                       </div>
                     </div>
@@ -203,7 +203,7 @@
                             <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto mt-4">
-                            <button class="btn btn-primary" type="button">Ajukan Magang</button>
+                            <button class="btn btn-info text-white" type="button">Ajukan Magang</button>
                         </div>
                       </div>
                     </div>
@@ -246,7 +246,7 @@
                             <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto mt-4">
-                            <button class="btn btn-primary" type="button">Ajukan Magang</button>
+                            <button class="btn btn-info text-white" type="button">Ajukan Magang</button>
                         </div>
                       </div>
                     </div>
@@ -289,7 +289,7 @@
                             <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto mt-4">
-                            <button class="btn btn-primary" type="button">Ajukan Magang</button>
+                            <button class="btn btn-info text-white" type="button">Ajukan Magang</button>
                         </div>
                       </div>
                     </div>
