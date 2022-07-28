@@ -70,30 +70,31 @@
 
         <li class="nav-item dropdown">
 
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+          <!-- <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-bell"></i>
             <span class="badge bg-primary badge-number">4</span>
-          </a><!-- End Notification Icon -->
+          </a> -->
+          <!-- End Notification Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-            <li class="dropdown-header">
+            <!-- <li class="dropdown-header">
               You have 4 new notifications
               <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
               <hr class="dropdown-divider">
-            </li>
+            </li> -->
 
-            <li class="notification-item">
+            <!-- <li class="notification-item">
               <i class="bi bi-exclamation-circle text-warning"></i>
               <div>
                 <h4>Lorem Ipsum</h4>
                 <p>Quae dolorem earum veritatis oditseno</p>
                 <p>30 min. ago</p>
               </div>
-            </li>
+            </li> -->
 
-            <li>
+            <!-- <li>
               <hr class="dropdown-divider">
             </li>
 
@@ -102,7 +103,7 @@
             </li>
             <li class="dropdown-footer">
               <a href="#">Show all notifications</a>
-            </li>
+            </li> -->
 
           </ul><!-- End Notification Dropdown Items -->
 
@@ -112,7 +113,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="<?php echo e(asset("admin/assets/img/profile-img.jpg")); ?>" alt="Profile" class="rounded-circle">
+            <img src="<?php echo e(asset("admin/assets/img/profile.png")); ?>" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">Admin Magang</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -125,12 +126,12 @@
               <hr class="dropdown-divider">
             </li>
 
-            <li>
+            <!-- <li>
               <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                 <i class="bi bi-person"></i>
                 <span>Profile</span>
               </a>
-            </li>
+            </li> -->
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -144,9 +145,9 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="<?php echo e(route('logout')); ?>">
                 <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
+                <span>Logout</span>
               </a>
             </li>
 

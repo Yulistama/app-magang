@@ -12,6 +12,7 @@
         </div>
         <div class="modal-body px-5">
             <div class="col-12 my-4" id="chooseLogin" style="display: '';">
+                
                 <h5 class="modal-title fw-bold" id="loginLabel">Masuk Magang</h5>
                 <p class="mt-3">Saya ingin masuk sebagai</p>
                 <div class="card" id="cardMhs" style="cursor: pointer;">
@@ -28,23 +29,34 @@
 
             <!-- s.login mhs -->
             <div class="col-12 mt-5" id="loginMhs" style="display: none;">
+                @if (session('error') != null)
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 <i style="font-size:20px; cursor: pointer" class="fa mt-3 mb-5" id="backMhs">&#xf060;</i> <span class="fw-bold ms-3" style="font-size:22px;">Login Siswa/Mahasiswa</span>
-                <div class="mb-3">
-                    <label for="emailLogin" class="form-label fw-bold">Email</label>
-                    <input type="email" class="form-control" id="emailLogin" placeholder="Email">
-                </div>
-                <div class="mb-3">
-                    <label for="passwordLogin" class="form-label fw-bold">Password</label>
-                    <input type="password" class="form-control" id="passwordLogin" placeholder="Password">
-                </div>
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button class="btn btn-info text-white btn-lg mt-3" type="button">Masuk</button>
-                </div>
+                
+                <form class="row g-3 needs-validation" novalidate action="{{ route('post_login') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="emailLogin" class="form-label fw-bold">Email</label>
+                        <input type="email" class="form-control" id="emailLogin" placeholder="Email" name="email" value="{{old('email')}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="passwordLogin" class="form-label fw-bold">Password</label>
+                        <input type="password" class="form-control" id="passwordLogin" placeholder="Password" name="password">
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-info text-white btn-lg mt-3" type="submit">Masuk</button>
+                    </div>
+                </form>
             </div>
             <!-- e.login mhs -->
 
             <!-- s.login perusahan -->
             <div class="col-12 mt-5" id="loginPerusahaan" style="display: none;">
+                @include('component.error')
                 <i style="font-size:20px; cursor: pointer" class="fa mt-3 mb-5" id="backPt">&#xf060;</i> <span class="fw-bold ms-3" style="font-size:22px;">Login Perusahaan</span>
                 <!-- <h5 class="modal-title fw-bold mb-5 mt-3" id="loginLabel">Login Perusahaan</h5> -->
                 <div class="mb-3">

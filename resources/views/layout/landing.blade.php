@@ -55,7 +55,15 @@
           <li><a class="nav-link scrollto <?php echo e(url()->current() == route('infomagangdetail') ? "active" : ""); ?>" href="<?php echo e(route('infomagangdetail')); ?>">Magang</a></li>
           <li><a class="nav-link scrollto" href="#">Contact</a></li>
           <li><a class="nav-link scrollto" href="#">About</a></li>
-          <li><a class="getstarted scrollto" data-bs-toggle="modal" data-bs-target="#login">Masuk</a></li>
+          
+          @if(Session::get('user.id_role') == 2)
+            <li><a class="nav-link scrollto <?php echo e(url()->current() == route('datamagang') ? "active" : ""); ?>" href="<?php echo e(route('datamagang')); ?>">Notif</a></li>
+            <li><a class="nav-link scrollto" href="<?php echo e(route('logout')); ?>">Logout</a></li>
+            <li><a class="getstarted scrollto">{{ Session::get('user.name') }}</a></li>
+          @else
+            <li><a class="getstarted scrollto" data-bs-toggle="modal" data-bs-target="#login">Masuk</a></li>
+          @endif
+          
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
