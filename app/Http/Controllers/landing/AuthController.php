@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function login()
-    {
-        return view('pages.auth.login');
-    }
+    // public function login()
+    // {
+    //     return view('pages.auth.login');
+    // }
 
-    public function registermhs()
-    {
-        return view('pages.auth.register');
-    }
+    // public function registermhs()
+    // {
+    //     return view('pages.auth.register');
+    // }
 }

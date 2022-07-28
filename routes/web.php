@@ -3,7 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\landing\LandingController;
 use App\Http\Controllers\admin\AdminController;
-use App\Http\Controllers\landing\AuthController;
+use App\Http\Controllers\auth\AuthController;
+use App\Http\Middleware\CheckLogin;
+
+// s.auth
+Route::get('/pilih-login', [AuthController::class, 'pilih_login'])->name('pilihlogin');
+Route::get('/login-mhs', [AuthController::class, 'login_mhs'])->name('loginmhs');
+Route::get('/login-pt', [AuthController::class, 'login_pt'])->name('loginpt');
+Route::post('/login', [AuthController::class, 'post_login'])->name('post_login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::post('/register', [AuthController::class, 'register_post'])->name('post_register');
+Route::get('/register-account', [AuthController::class, 'registeraccount'])->name('registeraccount');
+// e.auth
 
 // s.landing page
 Route::get('/', [LandingController::class, 'landing'])->name('landing');
@@ -12,21 +24,17 @@ Route::get('/info-detail-perusahaan', [LandingController::class, 'detailperusaha
 Route::get('/data-magang', [LandingController::class, 'datamagang'])->name('datamagang');
 // e.landing page
 
-// s.auth
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::get('/register-mhs', [AuthController::class, 'registermhs'])->name('registermhs');
-Route::get('/register-perusahaan', [AuthController::class, 'registerperusahaan'])->name('registerperusahaan');
-// e.auth
-
 // s.admin
-Route::get('/dashboard-admin', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::middleware([CheckLogin::class])->group(function(){
+    Route::get('/dashboard-admin', [AdminController::class, 'dashboard'])->name('dashboard');
 
-Route::get('/magang-admin', [AdminController::class, 'magang'])->name('magang');
-Route::get('/magang-melamar-admin', [AdminController::class, 'magangmelamar'])->name('magangmelamar');
-Route::get('/magang-selesai-admin', [AdminController::class, 'magangselesai'])->name('magangselesai');
-Route::get('/magang-ditolak-admin', [AdminController::class, 'magangditolak'])->name('magangditolak');
+    Route::get('/magang-admin', [AdminController::class, 'magang'])->name('magang');
+    Route::get('/magang-melamar-admin', [AdminController::class, 'magangmelamar'])->name('magangmelamar');
+    Route::get('/magang-selesai-admin', [AdminController::class, 'magangselesai'])->name('magangselesai');
+    Route::get('/magang-ditolak-admin', [AdminController::class, 'magangditolak'])->name('magangditolak');
 
-Route::get('/konten-admin', [AdminController::class, 'konten'])->name('konten');
+    Route::get('/konten-admin', [AdminController::class, 'konten'])->name('konten');
 
-Route::get('/profile-magang', [AdminController::class, 'profilemagang'])->name('profilemagang');
+    Route::get('/profile-magang', [AdminController::class, 'profilemagang'])->name('profilemagang');
+});
 // e.admin
