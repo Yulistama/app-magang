@@ -6,7 +6,7 @@
       <div class="section-title">
         <h2>Info Magang</h2>
       </div>
-      @include('component.cardDetailInfoMagang')
+      @include('component.cardDetailInfoMagang', ['perusahaan', $perusahaan])
     </div>
   </section>
 

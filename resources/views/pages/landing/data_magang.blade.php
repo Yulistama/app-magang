@@ -33,31 +33,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Perusahaan A</td>
-                                <td>Melamar</td>
-                                <td>Detail</td>
-                            </tr>
-                            <tr>
-                                <td>Perusahaan B</td>
-                                <td>Melamar</td>
-                                <td>Detail</td>
-                            </tr>
-                            <tr>
-                                <td>Perusahaan C</td>
-                                <td>Melamar</td>
-                                <td>Detail</td>
-                            </tr>
-                            <tr>
-                                <td>Perusahaan D</td>
-                                <td>Melamar</td>
-                                <td>Detail</td>
-                            </tr>
-                            <tr>
-                                <td>Perusahaan E</td>
-                                <td>Melamar</td>
-                                <td>Detail</td>
-                            </tr>
+                            @foreach($magang as $item)
+                                <tr>
+                                    <td>{{$item->nama_pt}}</td>
+                                    <td>{{$item->status}}</td>
+                                    <td><a style="text-decoration: none;" href="<?php echo e(route('detailperusahaan', ['id' => $item->id_perusahaan])); ?>">Detail</a></td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -76,7 +58,8 @@
                     null,
                     null,
                     { "width": "10%" }
-                ]
+                ],
+                "order": [[2, 'desc']],
             });
         });
     </script>

@@ -33,48 +33,16 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td style="text-align:center"><span class="badge bg-info">Magang</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td style="text-align:center"><span class="badge bg-info">Magang</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td style="text-align:center"><span class="badge bg-success">Selesai</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td style="text-align:center"><span class="badge bg-info">Magang</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td style="text-align:center"><span class="badge bg-info">Magang</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">6</th>
-                    <td>Raheem Lehner</td>
-                    <td>Programer</td>
-                    <td style="text-align:center"><span class="badge bg-info">Magang</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">7</th>
-                    <td>Raheem Lehner</td>
-                    <td>Data Analys</td>
-                    <td style="text-align:center"><span class="badge bg-info">Magang</span></td>
-                  </tr>
+
+                  @foreach($magang as $index => $item)
+                    <tr>
+                      <th scope="row">{{$index+1}}</th>
+                      <td>{{$item->nama_mhs}}</td>
+                      <td>{{$item->position}}</td>
+                      <td style="text-align:center"><span class="badge bg-info">{{$item->status}}</span></td>
+                    </tr>
+                  @endforeach
+                  
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->

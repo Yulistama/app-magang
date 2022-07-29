@@ -4,7 +4,7 @@
 <section id="breadcrumbs" class="breadcrumbs">
   <div class="container">
     <ol>
-      <li><a href="#">Home</a></li>
+      <li><a href="{{ URL::previous() }}">Home</a></li>
       <li>Detail Perusahaan</li>
     </ol>
     <h2>Detail Perusahaan</h2>
@@ -13,6 +13,7 @@
 
 <!-- ======= Portfolio Details Section ======= -->
   <section id="portfolio-details" class="portfolio-details">
+
       <div class="container">
 
         <div class="row gy-4">
@@ -40,9 +41,9 @@
 
           <div class="col-lg-4">
             <div class="portfolio-info">
-              <h3>Perusahaan ABC</h3>
+              <h3>{{$perusahaan->name}}</h3>
               <ul>
-                <li><strong>Location</strong>: Jakarta, Indonesi</li>
+                <li><strong>Location</strong>: Jakarta, Indonesia</li>
                 <li><strong>Category</strong>: Media</li>
                 <li><strong>Employe</strong>: 502 - 1.000</li>
                 <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
@@ -51,9 +52,9 @@
 
             <div class="portfolio-info mt-3">
               <div class="portfolio-description">
-                <h2>This is an example of portfolio detail</h2>
+                <h2>Portfolio</h2>
                 <p>
-                  Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                {{$perusahaan->name}} Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
                 </p>
               </div>
             </div>
@@ -103,19 +104,33 @@
                           <ol>- is simply dummy text of the printing and typesetting industry.</ol>
                         </ul>
                       </div>
-                      <div class="col-12 mt-4">
-                        <p class="fw-bold">Magang :</p>
-                        <div class="mb-3 px-4 mt-3">
-                            <label for="exampleFormControlInput1" class="form-label">Dari</label>
-                            <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                        </div>
-                        <div class="mb-3 px-4">
-                            <label for="exampleFormControlInput1" class="form-label">Sampai</label>
-                            <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                        </div>
-                        <div class="d-grid gap-2 col-6 mx-auto mt-4">
-                            <button class="btn btn-info text-white" type="button">Ajukan Magang</button>
-                        </div>
+                      <form class="row g-3 needs-validation" novalidate action="{{ route('ajukanmagang') }}" method="POST">
+                        @csrf
+                        <input type="hidden" class="form-control" name="id_user" value="{{ Session::get('user.id') }}">
+                        <input type="hidden" class="form-control" name="id_perusahaan" value="{{$perusahaan->id_perusahaan}}">
+                        <input type="hidden" class="form-control" name="nama_pt" value="{{$perusahaan->name}}">
+                        <input type="hidden" class="form-control" name="nama_mhs" value="{{ Session::get('user.name') }}">
+                        <input type="hidden" class="form-control" name="position" value="Web Developer">
+                        <div class="col-12 mt-4">
+                          <p class="fw-bold">Magang :</p>
+                          @if (session('error') != null)
+                              <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                  {{ session('error') }}
+                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                              </div>
+                          @endif
+                          <div class="mb-3 px-4 mt-3">
+                              <label for="exampleFormControlInput1" class="form-label">Dari</label>
+                              <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="start_date" required>
+                          </div>
+                          <div class="mb-3 px-4">
+                              <label for="exampleFormControlInput1" class="form-label">Sampai</label>
+                              <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="end_date" required>
+                          </div>
+                          <div class="d-grid gap-2 col-6 mx-auto mt-4">
+                              <button class="btn btn-info text-white" type="submit">Ajukan Magang</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                     

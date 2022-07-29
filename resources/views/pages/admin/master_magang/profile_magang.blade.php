@@ -21,8 +21,8 @@
         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
           <img src="<?php echo e(asset("admin/assets/img/profile-img.jpg")); ?>" alt="Profile" class="rounded-circle">
-          <h2>Kevin Anderson</h2>
-          <h3>Web Designer</h3>
+          <h2>{{$mhs->name}}</h2>
+          <!-- <h3>Web Designer</h3> -->
           <div class="social-links mt-2">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -54,43 +54,31 @@
 
             <div class="tab-pane fade show active profile-overview" id="profile-overview">
               <h5 class="card-title">About</h5>
-              <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
-
+              @if($mhs->about == null)
+                <p class="small fst-italic">About me</p>
+              @else
+                <p class="small fst-italic">{{$mhs->about}}</p>
+              @endif
               <h5 class="card-title">Profile Details</h5>
 
               <div class="row">
-                <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                <div class="col-lg-3 col-md-4 label ">Name</div>
+                <div class="col-lg-9 col-md-8">{{$mhs->name}}</div>
               </div>
 
               <div class="row">
-                <div class="col-lg-3 col-md-4 label">Company</div>
-                <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">Job</div>
-                <div class="col-lg-9 col-md-8">Web Designer</div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">Country</div>
-                <div class="col-lg-9 col-md-8">USA</div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">Address</div>
-                <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">Phone</div>
-                <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                <div class="col-lg-3 col-md-4 label">Nomor HP</div>
+                <div class="col-lg-9 col-md-8">(+62) {{$mhs->phone}}</div>
               </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Email</div>
-                <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                <div class="col-lg-9 col-md-8">{{$mhs->email}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Alamat</div>
+                <div class="col-lg-9 col-md-8">{{$mhs->alamat}}</div>
               </div>
 
             </div>
@@ -98,22 +86,47 @@
             <div class="tab-pane fade pt-3" id="profile-status">
 
               <!-- Settings Form -->
-              <form>
 
                 <div class="row mb-3">
-                  <label for="fullName" class="col-md-3 col-lg-3 col-form-label">Status Saat Ini : </label>
-                  <div class="col-md-8 col-lg-9">
-                    
-                    <div class="dropdown">
-                        <a class="btn btn-info text-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                            Terima
-                        </a>
+                  <div class="col-md-3">
+                    <span>Status saat ini : </span>
+                  </div>
+                  <div class="col-8">
+                    <div class="row">
+                      <div class="col-md-12">
+                        @if($status_magang->status == 'Melamar')
+                          <span class="badge bg-warning py-2">{{$status_magang->status}}</span>
+                        @elseif($status_magang->status == 'Terima')
+                          <span class="badge bg-info py-2">{{$status_magang->status}}</span>
+                        @elseif($status_magang->status == 'Tolak')
+                          <span class="badge bg-danger py-2">{{$status_magang->status}}</span>
+                        @elseif($status_magang->status == 'Selesai')
+                          <span class="badge bg-success py-2">{{$status_magang->status}}</span>
+                        @endif
+                      </div>
 
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Terima</a></li>
-                            <li><a class="dropdown-item" href="#">Tolak</a></li>
-                            <li><a class="dropdown-item" href="#">Selesai</a></li>
-                        </ul>
+                      @if($status_magang->status == 'Selesai' || $status_magang->status == 'Tolak')
+                        
+                      @else
+                        <form class="row g-3 needs-validation" novalidate action="{{ route('updatestatusmagang') }}" method="POST">
+                          @csrf
+                          <input type="hidden" class="form-control" name="id_mhs" value="{{$mhs->id_mhs}}">
+                          <div class="col-md-12 mt-3">
+                            <select class="form-select" aria-label="Default select example" name="status">
+                                <option value="">--Ubah Status--</option>
+                                @if($status_magang->status == 'Melamar')
+                                  <option value="1">Terima</option>
+                                  <option value="2">Tolak</option>
+                                @elseif($status_magang->status == 'Terima')
+                                  <option value="3">Selesai</option>
+                                @endif
+                            </select>
+                          </div>
+                          <div class="col-12 text-center">
+                            <button class="btn btn-info text-white btn-lg my-2" type="submit">Update</button>
+                          </div>
+                        </form>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -121,7 +134,7 @@
                 <!-- <div class="text-center">
                   <button type="submit" class="btn btn-primary">Save Changes</button>
                 </div> -->
-              </form><!-- End settings Form -->
+             
 
             </div>
 

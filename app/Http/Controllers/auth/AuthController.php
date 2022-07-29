@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\auth;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\Mahasiswa;
+use App\Models\Perusahaan;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -38,7 +40,6 @@ class AuthController extends Controller
             if($validator->fails()) throw new Exception($validator->errors()->first());
 
             $user = User::where('email', $request->email)->first();
-            // dd($user);
             if(!$user) throw new Exception('Email tidak terdaftar');
             if(!Hash::check($request->password, $user->password)) throw new Exception('Email/Password tidak sesuai');
 
@@ -48,12 +49,6 @@ class AuthController extends Controller
             Session::put('user.email', $user->email);
             Session::put('user.status', $user->status);
             Session::put('user.phone', $user->phone);
-
-            // if(Session::get('redirect')) {
-            //     $redirect = Session::get('redirect');
-            //     Session::forget('redirect');
-            //     return redirect($redirect);
-            // }
 
             if($user->id_role == 1){
                 return redirect()->route('dashboard');
@@ -87,8 +82,6 @@ class AuthController extends Controller
     public function register_post(Request $request)
     {
         try{
-            // dd($request->all());
-
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'email' => 'required|email',
@@ -99,14 +92,40 @@ class AuthController extends Controller
             ]);
             if($validator->fails()) throw new Exception($validator->errors()->first());
 
-            $add_users            = new User;
-            $add_users->name      = $request->name;
-            $add_users->email     = $request->email;
-            $add_users->phone     = $request->phone;
-            $add_users->id_role   = $request->role;
-            $add_users->password  = Hash::make($request->confirm_password);
-            $add_users->is_active = 1;
-            $add_users->save();
+            if($request->role == 1){
+                $add_users            = new User;
+                $add_users->name      = $request->name;
+                $add_users->email     = $request->email;
+                $add_users->phone     = $request->phone;
+                $add_users->id_role   = $request->role;
+                $add_users->password  = Hash::make($request->confirm_password);
+                $add_users->is_active = 1;
+                $add_users->save();
+    
+                $add_perusahaan                = new Perusahaan;
+                $add_perusahaan->id_perusahaan = $add_users->id;
+                $add_perusahaan->name          = $request->name;
+                $add_perusahaan->email         = $request->email;
+                $add_perusahaan->save();
+
+            }else{
+
+                $add_users            = new User;
+                $add_users->name      = $request->name;
+                $add_users->email     = $request->email;
+                $add_users->phone     = $request->phone;
+                $add_users->id_role   = $request->role;
+                $add_users->password  = Hash::make($request->confirm_password);
+                $add_users->is_active = 1;
+                $add_users->save();
+
+                $add_mhs              = new Mahasiswa;
+                $add_mhs->id_mhs      = $add_users->id; 
+                $add_mhs->name        = $request->name; 
+                $add_mhs->email       = $request->email; 
+                $add_mhs->phone       = $request->phone; 
+                $add_mhs->save();
+            }
 
             Session::flash('alert.notification.users_add', true);
 
