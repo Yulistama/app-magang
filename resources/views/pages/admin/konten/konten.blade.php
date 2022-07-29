@@ -38,48 +38,48 @@
           <div class="tab-content pt-2 my-3 mx-3">
             <div class="tab-pane fade show active profile-overview" id="profile-overview">
               <h5 class="card-title">About</h5>
-              <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
+              <p class="small fst-italic">About company</p>
 
               <h5 class="card-title">Company Profile Details</h5>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label ">Company Name</div>
-                <div class="col-lg-9 col-md-8">Perusahaan ABC</div>
+                <div class="col-lg-9 col-md-8">{{$perusahaan->name}}</div>
               </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Location</div>
-                <div class="col-lg-9 col-md-8">Jakarta, Indonesia</div>
+                <div class="col-lg-9 col-md-8">{{$perusahaan->location ? $perusahaan->location : '-'}}</div>
               </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Category</div>
-                <div class="col-lg-9 col-md-8">Media</div>
+                <div class="col-lg-9 col-md-8">{{$perusahaan->category ? $perusahaan->category : '-'}}</div>
               </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Address</div>
-                <div class="col-lg-9 col-md-8">Jl. Jakarta Pusat No 01</div>
+                <div class="col-lg-9 col-md-8">-</div>
               </div>
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-lg-3 col-md-4 label">Phone</div>
                 <div class="col-lg-9 col-md-8">(021) 486-3538 2907</div>
-              </div>
+              </div> -->
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Email</div>
-                <div class="col-lg-9 col-md-8">example@gmail.com</div>
+                <div class="col-lg-9 col-md-8">{{$perusahaan->email ? $perusahaan->email : '-'}}</div>
               </div>
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-lg-3 col-md-4 label">Employe</div>
-                <div class="col-lg-9 col-md-8">5000</div>
-              </div>
+                <div class="col-lg-9 col-md-8">{{$perusahaan->name}}</div>
+              </div> -->
               
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Web Url</div>
-                <div class="col-lg-9 col-md-8">https://perusahaanabc.com/</div>
+                <div class="col-lg-9 col-md-8">{{$perusahaan->project_url ? $perusahaan->project_url : '-'}}</div>
               </div>
 
             </div>
@@ -120,67 +120,67 @@
                     <div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Name</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" class="form-control" id="fullName" value="Perusahaan ABC">
+                        <input name="name" type="text" class="form-control" id="fullName" value="{{$perusahaan->name}}" placeholder="Name">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
                       <div class="col-md-8 col-lg-9">
-                        <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
+                        <textarea name="about" class="form-control" id="about" style="height: 100px">About company</textarea>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Location" class="col-md-4 col-lg-3 col-form-label">Location</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="Location" type="text" class="form-control" id="Location" value="Jakarta, Indonesia">
+                        <input name="location" type="text" class="form-control" id="Location" value="{{$perusahaan->location}}" placeholder="Location">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Job" class="col-md-4 col-lg-3 col-form-label">Category</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="Category" type="text" class="form-control" id="Category" value="Media">
+                        <input name="category" type="text" class="form-control" id="Category" value="{{$perusahaan->category}}" placeholder="Category">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="address" type="text" class="form-control" id="Address" value="Jl. Jakarta Pusat No 01">
+                        <input name="address" type="text" class="form-control" id="Address" value="" placeholder="Addres">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="phone" type="text" class="form-control" id="Phone" value="(021) 486-3538 2907">
+                        <input name="phone" type="text" class="form-control" id="Phone" value="" placeholder="Phone">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" value="example@gmail.com">
+                        <input name="email" type="email" class="form-control" id="Email" value="{{$perusahaan->email}}" placeholder="Email">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Employe</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="twitter" type="text" class="form-control" id="Twitter" value="5000">
+                        <input name="employe" type="text" class="form-control" id="Twitter" value="{{$perusahaan->employe}}" placeholder="Employe">
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Web Url</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="twitter" type="text" class="form-control" id="Twitter" value="https://perusahaanabc.com/">
+                        <input name="project_url" type="text" class="form-control" id="Twitter" value="{{$perusahaan->project_url}}" placeholder="https://perusahaanabc.com">
                       </div>
                     </div>
 
                     <div class="text-center">
-                      <button type="submit" class="btn btn-info text-white">Simpan</button>
+                      <button type="submit" class="btn btn-info text-white">Ubah</button>
                     </div>
                   </form><!-- End Profile Edit Form -->
 

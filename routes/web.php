@@ -20,8 +20,11 @@ Route::get('/register-account', [AuthController::class, 'registeraccount'])->nam
 // s.landing page
 Route::get('/', [LandingController::class, 'landing'])->name('landing');
 Route::get('/info-magang-detail', [LandingController::class, 'infomagangdetail'])->name('infomagangdetail');
-Route::get('/info-detail-perusahaan', [LandingController::class, 'detailperusahaan'])->name('detailperusahaan');
-Route::get('/data-magang', [LandingController::class, 'datamagang'])->name('datamagang');
+Route::get('/info-detail-perusahaan/{id}', [LandingController::class, 'detailperusahaan'])->name('detailperusahaan');
+Route::get('/data-magang/{id}', [LandingController::class, 'datamagang'])->name('datamagang');
+Route::post('/ajukanmagang', [LandingController::class, 'ajukanmagang'])->name('ajukanmagang');
+Route::get('/profile', [LandingController::class, 'profile'])->name('profile');
+Route::post('/update-profile', [LandingController::class, 'update_profile'])->name('update_profile');
 // e.landing page
 
 // s.admin
@@ -35,6 +38,7 @@ Route::middleware([CheckLogin::class])->group(function(){
 
     Route::get('/konten-admin', [AdminController::class, 'konten'])->name('konten');
 
-    Route::get('/profile-magang', [AdminController::class, 'profilemagang'])->name('profilemagang');
+    Route::get('/profile-magang/{id}', [AdminController::class, 'profilemagang'])->name('profilemagang');
+    Route::post('/update-status-magang', [AdminController::class, 'ubahstatusmagang'])->name('updatestatusmagang');
 });
 // e.admin

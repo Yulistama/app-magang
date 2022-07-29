@@ -114,13 +114,13 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="<?php echo e(asset("admin/assets/img/profile.png")); ?>" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Admin Magang</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{ Session::get('user.name') }}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
+              <h6>{{ Session::get('user.name') }}</h6>
+              <!-- <span>Web Designer</span> -->
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -176,7 +176,7 @@
         <a class="<?php echo e(url()->current() == route('magang') ? "nav-link" : "nav-link collapsed"); ?>" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="<?php echo e(route('magang')); ?>">
           <i class="bi bi-laptop"></i><span>Master Magang</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="tables-nav" class="<?php echo e(url()->current() == route('magang') || url()->current() == route('magangmelamar') || url()->current() == route('magangselesai') || url()->current() == route('magangditolak') || url()->current() == route('profilemagang') ? "nav-content collapse show" : "nav-content collapse"); ?>" data-bs-parent="#sidebar-nav">
+        <ul id="tables-nav" class="<?php echo e(url()->current() == route('magang') || url()->current() == route('magangmelamar') || url()->current() == route('magangselesai') || url()->current() == route('magangditolak') ? "nav-content collapse show" : "nav-content collapse"); ?>" data-bs-parent="#sidebar-nav">
           <li>
             <a href="<?php echo e(route('magang')); ?>" class="<?php echo e(url()->current() == route('magang') ? "active" : "");?>">
               <i class="bi bi-circle"></i><span>Magang</span>
@@ -223,6 +223,7 @@
   </aside>
   <!-- End Sidebar-->
 
+  @include('sweetalert::alert')
   @yield('content')
 
   

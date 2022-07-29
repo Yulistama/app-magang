@@ -133,107 +133,21 @@
 
     <div class="row mt-3">
         <div class="card-content-custome" style="display: 'none';">
-            <div class="card-custome">
-                <a style="text-decoration: none;" href="<?php echo e(route('detailperusahaan')); ?>">
-                    <div class="card-image-custome">
-                        <img src="<?php echo e(asset("landing/assets/img/company/company-1.jpg")); ?>" style="height: 200px; width: 100%" alt="">
-                    </div>
-                    <div class="card-info-custome">
-                        <h3>Perusahaan 01</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="card-custome">
-                <div class="card-image-custome">
-                    <img src="<?php echo e(asset("landing/assets/img/company/company-6.jpg")); ?>" style="height: 200px; width: 100%" alt="">
+
+            @foreach($perusahaan as $item)
+                <div class="card-custome">
+                    <a style="text-decoration: none;" href="<?php echo e(route('detailperusahaan', ['id' => $item->id_perusahaan])); ?>">
+                        <div class="card-image-custome">
+                            <img src="<?php echo e(asset("landing/assets/img/company/company-5.jpg")); ?>" style="height: 200px; width: 100%" alt="">
+                        </div>
+                        <div class="card-info-custome">
+                            <h5>{{$item->name}}</h5>
+                            <p>{{$item->name}} is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="card-info-custome">
-                    <h3>Perusahaan 02</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
-            </div>
-            <div class="card-custome">
-                <div class="card-image-custome">
-                    <img src="<?php echo e(asset("landing/assets/img/company/company-3.jpg")); ?>" style="height: 200px; width: 100%" alt="">
-                </div>
-                <div class="card-info-custome">
-                    <h3>Perusahaan 03</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
-            </div>
-            <div class="card-custome">
-                <div class="card-image-custome">
-                    <img src="<?php echo e(asset("landing/assets/img/company/company-4.jpg")); ?>" style="height: 200px; width: 100%" alt="">
-                </div>
-                <div class="card-info-custome">
-                    <h3>Perusahaan 04</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
-            </div>
-            <div class="card-custome">
-                <div class="card-image-custome">
-                    <img src="<?php echo e(asset("landing/assets/img/company/company-5.jpg")); ?>" style="height: 200px; width: 100%" alt="">
-                </div>
-                <div class="card-info-custome">
-                    <h3>Perusahaan 05</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
-            </div>
-            <div class="card-custome">
-                <div class="card-image-custome">
-                    <img src="<?php echo e(asset("landing/assets/img/company/company-2.jpg")); ?>" style="height: 200px; width: 100%" alt="">
-                </div>
-                <div class="card-info-custome">
-                    <h3>Perusahaan 06</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
-            </div>
-            <div class="card-custome">
-                <div class="card-image-custome">
-                    <img src="<?php echo e(asset("landing/assets/img/company/company-1.jpg")); ?>" style="height: 200px; width: 100%" alt="">
-                </div>
-                <div class="card-info-custome">
-                    <h3>Perusahaan 07</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
-            </div>
-            <div class="card-custome">
-                <div class="card-image-custome">
-                    <img src="<?php echo e(asset("landing/assets/img/company/company-2.jpg")); ?>" style="height: 200px; width: 100%" alt="">
-                </div>
-                <div class="card-info-custome">
-                    <h3>Perusahaan 08</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
-            </div>
-            <div class="card-custome">
-                <div class="card-image-custome">
-                    <img src="<?php echo e(asset("landing/assets/img/company/company-2.jpg")); ?>" style="height: 200px; width: 100%" alt="">
-                </div>
-                <div class="card-info-custome">
-                    <h3>Perusahaan 06</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
-            </div>
-            <div class="card-custome">
-                <div class="card-image-custome">
-                    <img src="<?php echo e(asset("landing/assets/img/company/company-1.jpg")); ?>" style="height: 200px; width: 100%" alt="">
-                </div>
-                <div class="card-info-custome">
-                    <h3>Perusahaan 07</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
-            </div>
-            <div class="card-custome">
-                <div class="card-image-custome">
-                    <img src="<?php echo e(asset("landing/assets/img/company/company-2.jpg")); ?>" style="height: 200px; width: 100%" alt="">
-                </div>
-                <div class="card-info-custome">
-                    <h3>Perusahaan 08</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
-            </div>
+            @endforeach
+            
         </div>
         <div class="pagination-custome mt-3"></div>
         

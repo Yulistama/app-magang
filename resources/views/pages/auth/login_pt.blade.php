@@ -20,7 +20,7 @@
 
                 <form class="row g-3 needs-validation" novalidate action="{{ route('post_login') }}" method="POST">
                     @csrf
-                    <div class="mb-3 px-5">
+                    <div class="mb-0 px-5">
                         <label for="emailLogin" class="form-label fw-bold">Email</label>
                         <input type="email" class="form-control" id="emailLogin" placeholder="Email" name="email" value="{{old('email')}}">
                     </div>
