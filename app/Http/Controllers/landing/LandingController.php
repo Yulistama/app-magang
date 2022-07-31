@@ -7,6 +7,7 @@ use App\Models\Magang;
 use App\Models\Mahasiswa;
 use App\Models\Perusahaan;
 use App\Models\User;
+use App\Models\Positions;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -50,6 +51,11 @@ class LandingController extends Controller
         try{
             $perusahaan = Perusahaan::where('id_perusahaan', $request->id)->first();
             $data['perusahaan'] = $perusahaan;
+
+            $job = Positions::where('id_perusahaan', $request->id)->where('status', 'Aktif')->get();
+            $jumlah_job = Positions::where('id_perusahaan', $request->id)->where('status', 'Aktif')->count();
+            $data['jobs'] = $job;
+            $data['jumlah_job'] = $jumlah_job;
 
             return view('pages.landing.detail_perusahaan', $data);
         }catch (Exception $e){

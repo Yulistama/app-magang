@@ -15,7 +15,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-danger">Hapus</button>
+        <form id="delete-item-form" method="POST" action="">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger">Hapus</button>
+        </form>                
       </div>
     </div>
   </div>
