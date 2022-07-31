@@ -242,6 +242,32 @@
   <!-- Template Main JS File -->
   <script src="<?php echo e(asset("admin/assets/js/main.js")); ?>"></script>
 
+  <script>
+      $('.delete-item-button').on('click', function () {
+        $('#delete-item-form').attr('action', $(this).data('bs-delete-link'));        
+      });
+
+      $('.edit-item-button').on('click', function () {
+        $('#id').attr('value', $(this).data('bs-item').id);         
+        $('#name').attr('value', $(this).data('bs-item').name); 
+        $('#position').attr('value', $(this).data('bs-item').position); 
+        $('#date').attr('value', $(this).data('bs-item').date);         
+        $('#status').val($(this).data('bs-item').status);
+        $('#jobdesc_1').attr('value', $(this).data('bs-item').jobdesc_1); 
+        $('#jobdesc_2').attr('value', $(this).data('bs-item').jobdesc_2); 
+        $('#jobdesc_3').attr('value', $(this).data('bs-item').jobdesc_3); 
+        $('#jobdesc_4').attr('value', $(this).data('bs-item').jobdesc_4); 
+        $('#jobdesc_5').attr('value', $(this).data('bs-item').jobdesc_5); 
+        $('#requirements_1').attr('value', $(this).data('bs-item').requirements_1); 
+        $('#requirements_2').attr('value', $(this).data('bs-item').requirements_2); 
+        $('#requirements_3').attr('value', $(this).data('bs-item').requirements_3); 
+        $('#requirements_4').attr('value', $(this).data('bs-item').requirements_4); 
+        $('#requirements_5').attr('value', $(this).data('bs-item').requirements_5); 
+        $('#descriptions').text($(this).data('bs-item').descriptions);     
+        $('#update-item-form').attr('action', $(this).data('bs-update-link'));    
+      });
+  </script>
+
 </body>
 
 </html>

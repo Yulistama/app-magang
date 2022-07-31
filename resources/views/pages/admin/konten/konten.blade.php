@@ -38,7 +38,7 @@
           <div class="tab-content pt-2 my-3 mx-3">
             <div class="tab-pane fade show active profile-overview" id="profile-overview">
               <h5 class="card-title">About</h5>
-              <p class="small fst-italic">About company</p>
+              <p class="small fst-italic">{{$perusahaan->about}}</p>
 
               <h5 class="card-title">Company Profile Details</h5>
 
@@ -59,23 +59,23 @@
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Address</div>
-                <div class="col-lg-9 col-md-8">-</div>
+                <div class="col-lg-9 col-md-8">{{$perusahaan->address ? $perusahaan->address : '-'}}</div>
               </div>
 
-              <!-- <div class="row">
+              <div class="row">
                 <div class="col-lg-3 col-md-4 label">Phone</div>
-                <div class="col-lg-9 col-md-8">(021) 486-3538 2907</div>
-              </div> -->
+                <div class="col-lg-9 col-md-8">{{$perusahaan->phone ? $perusahaan->phone : '-'}}</div>
+              </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Email</div>
                 <div class="col-lg-9 col-md-8">{{$perusahaan->email ? $perusahaan->email : '-'}}</div>
               </div>
 
-              <!-- <div class="row">
-                <div class="col-lg-3 col-md-4 label">Employe</div>
-                <div class="col-lg-9 col-md-8">{{$perusahaan->name}}</div>
-              </div> -->
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Employee</div>
+                <div class="col-lg-9 col-md-8">{{$perusahaan->employee ? $perusahaan->employee : '-'}}</div>
+              </div>
               
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Web Url</div>
@@ -87,13 +87,14 @@
             <div class="tab-pane fade pt-3" id="profile-status">
 
                 <!-- Profile Edit Form -->
-                <form>
+                <form method="POST" action="{{ route('ubahperusahaan', $perusahaan->id) }}">
+                @csrf
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Company Image</label>
                       <div class="col-md-8 col-lg-9">
                         <div class="row">
                             <div class="col-4">
-                                <img src="<?php echo e(asset("landing/assets/img/company/room1.jpg")); ?>" alt="" style="width: 150px">
+                                <img src="{{ $perusahaan->image }}" alt="" style="width: 150px">
                                 <div class="pt-2">
                                   <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
                                   <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
@@ -120,62 +121,68 @@
                     <div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Name</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="name" type="text" class="form-control" id="fullName" value="{{$perusahaan->name}}" placeholder="Name">
+                        <input name="name" type="text" class="form-control" id="name" value="{{$perusahaan->name}}" placeholder="Name">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
                       <div class="col-md-8 col-lg-9">
-                        <textarea name="about" class="form-control" id="about" style="height: 100px">About company</textarea>
+                        <textarea name="about" class="form-control" id="about" style="height: 100px">{{$perusahaan->about}}</textarea>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Location" class="col-md-4 col-lg-3 col-form-label">Location</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="location" type="text" class="form-control" id="Location" value="{{$perusahaan->location}}" placeholder="Location">
+                        <input name="location" type="text" class="form-control" id="location" value="{{$perusahaan->location}}" placeholder="Location">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Job" class="col-md-4 col-lg-3 col-form-label">Category</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="category" type="text" class="form-control" id="Category" value="{{$perusahaan->category}}" placeholder="Category">
+                        <input name="category" type="text" class="form-control" id="category" value="{{$perusahaan->category}}" placeholder="Category">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="address" type="text" class="form-control" id="Address" value="" placeholder="Addres">
+                        <input name="address" type="text" class="form-control" id="address" value="{{$perusahaan->address}}" placeholder="Addres">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="phone" type="text" class="form-control" id="Phone" value="" placeholder="Phone">
+                        <input name="phone" type="text" class="form-control" id="phone" value="{{$perusahaan->phone}}" placeholder="Phone">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" value="{{$perusahaan->email}}" placeholder="Email">
+                        <input name="email" type="email" class="form-control" id="email" value="{{$perusahaan->email}}" placeholder="Email">
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Employe</label>
+                      <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Employee</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="employe" type="text" class="form-control" id="Twitter" value="{{$perusahaan->employe}}" placeholder="Employe">
+                        <input name="employee" type="text" class="form-control" id="employee" value="{{$perusahaan->employee}}" placeholder="Employe">
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Web Url</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="project_url" type="text" class="form-control" id="Twitter" value="{{$perusahaan->project_url}}" placeholder="https://perusahaanabc.com">
+                        <input name="project_url" type="text" class="form-control" id="project_url" value="{{$perusahaan->project_url}}" placeholder="https://perusahaanabc.com">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Image Url</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="image" type="text" class="form-control" id="image" value="{{$perusahaan->image}}" placeholder="https://perusahaanabc.com/image.png">
                       </div>
                     </div>
 
@@ -215,83 +222,28 @@
                   </tr>
                 </thead>
                 <tbody>
+              @foreach($jobs as $index => $item)
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Web Developer</td>
-                    <td>IT</td>
-                    <td>1 Juni 2022</td>
-                    <td style="text-align:center"><span class="badge bg-success">Aktif</span></td>
+                    <th scope="row">{{$index+1}}</th>
+                    <td>{{$item->name}}</td>
+                    <td>{{$item->position}}</td>
+                    <td>{{$item->date}}</td>                    
                     <td style="text-align:center">
-                        <span class="badge bg-info py-2" data-bs-toggle="modal" data-bs-target="#ubahKontenModal" style="font-size: 14px; cursor:pointer"><i class="bi bi-pencil-square" ></i></i> Edit</span>
-                        <span class="badge bg-danger py-2" data-bs-toggle="modal" data-bs-target="#hapusKontenModal" style="font-size: 14px; cursor:pointer"><i class="bi bi-trash"></i></i> Delete</span>
+                      @if($item->status == 'Aktif')
+                      <span class="badge bg-success">
+                      @elseif($item->status == 'Tidak Aktif')
+                      <span class="badge bg-danger">
+                      @else
+                      <span class="badge bg-success">
+                      @endif
+                      {{$item->status}}</span>
+                    </td>
+                    <td style="text-align:center">
+                        <span class="badge bg-info py-2 edit-item-button" data-bs-update-link="{{ route('ubahjob', $item->id) }}" data-bs-toggle="modal" data-bs-item="{{ $item }}" data-bs-target="#ubahKontenModal" style="font-size: 14px; cursor:pointer"><i class="bi bi-pencil-square" ></i></i> Edit</span>
+                        <span class="badge bg-danger py-2 delete-item-button" data-bs-delete-link="{{ route('hapusjob', $item->id) }}" data-bs-toggle="modal" data-bs-target="#hapusKontenModal" style="font-size: 14px; cursor:pointer"><i class="bi bi-trash"></i></i> Delete</span>
                     </td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Front End Developer</td>
-                    <td>IT</td>
-                    <td>1 Juni 2022</td>
-                    <td style="text-align:center"><span class="badge bg-success">Aktif</span></td>
-                    <td style="text-align:center">
-                        <span class="badge bg-info py-2" style="font-size: 14px;"><i class="bi bi-pencil-square" ></i></i> Edit</span>
-                        <span class="badge bg-danger py-2" style="font-size: 14px;"><i class="bi bi-trash"></i></i> Delete</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Marketing</td>
-                    <td>Marketing</td>
-                    <td>1 Juni 2022</td>
-                    <td style="text-align:center"><span class="badge bg-danger">Non-Aktif</span></td>
-                    <td style="text-align:center">
-                        <span class="badge bg-info py-2" style="font-size: 14px;"><i class="bi bi-pencil-square" ></i></i> Edit</span>
-                        <span class="badge bg-danger py-2" style="font-size: 14px;"><i class="bi bi-trash"></i></i> Delete</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Video Editor</td>
-                    <td>Media</td>
-                    <td>1 Juni 2022</td>
-                    <td style="text-align:center"><span class="badge bg-success">Aktif</span></td>
-                    <td style="text-align:center">
-                        <span class="badge bg-info py-2" style="font-size: 14px;"><i class="bi bi-pencil-square" ></i></i> Edit</span>
-                        <span class="badge bg-danger py-2" style="font-size: 14px;"><i class="bi bi-trash"></i></i> Delete</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Fotografer</td>
-                    <td>Media</td>
-                    <td>1 Juni 2022</td>
-                    <td style="text-align:center"><span class="badge bg-danger">Non-Aktif</span></td>
-                    <td style="text-align:center">
-                        <span class="badge bg-info py-2" style="font-size: 14px;"><i class="bi bi-pencil-square" ></i></i> Edit</span>
-                        <span class="badge bg-danger py-2" style="font-size: 14px;"><i class="bi bi-trash"></i></i> Delete</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">6</th>
-                    <td>Auditor</td>
-                    <td>Akuntan</td>
-                    <td>1 Juni 2022</td>
-                    <td style="text-align:center"><span class="badge bg-success">Aktif</span></td>
-                    <td style="text-align:center">
-                        <span class="badge bg-info py-2" style="font-size: 14px;"><i class="bi bi-pencil-square" ></i></i> Edit</span>
-                        <span class="badge bg-danger py-2" style="font-size: 14px;"><i class="bi bi-trash"></i></i> Delete</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">7</th>
-                    <td>Data Analys</td>
-                    <td>IT</td>
-                    <td>1 Juni 2022</td>
-                    <td style="text-align:center"><span class="badge bg-success">Magang</span></td>
-                    <td style="text-align:center">
-                        <span class="badge bg-info py-2" style="font-size: 14px;"><i class="bi bi-pencil-square" ></i></i> Edit</span>
-                        <span class="badge bg-danger py-2" style="font-size: 14px;"><i class="bi bi-trash"></i></i> Delete</span>
-                    </td>
-                  </tr>
+                @endforeach
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->

@@ -138,11 +138,11 @@
                 <div class="card-custome">
                     <a style="text-decoration: none;" href="<?php echo e(route('detailperusahaan', ['id' => $item->id_perusahaan])); ?>">
                         <div class="card-image-custome">
-                            <img src="<?php echo e(asset("landing/assets/img/company/company-5.jpg")); ?>" style="height: 200px; width: 100%" alt="">
+                            <img src="{{$item->image}}" style="height: 200px; width: 100%" alt="">
                         </div>
                         <div class="card-info-custome">
                             <h5>{{$item->name}}</h5>
-                            <p>{{$item->name}} is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            <p>{{$item->name}} adalah {{$item->about}}.</p>
                         </div>
                     </a>
                 </div>

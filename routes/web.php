@@ -37,6 +37,10 @@ Route::middleware([CheckLogin::class])->group(function(){
     Route::get('/magang-ditolak-admin', [AdminController::class, 'magangditolak'])->name('magangditolak');
 
     Route::get('/konten-admin', [AdminController::class, 'konten'])->name('konten');
+    Route::post('/ubahperusahaan', [AdminController::class, 'ubahperusahaan'])->name('ubahperusahaan');
+    Route::post('/tambahjob', [AdminController::class, 'tambahjob'])->name('tambahjob');
+    Route::post('/ubahjob', [AdminController::class, 'ubahjob'])->name('ubahjob');
+    Route::delete('/hapusjob/{id}', [AdminController::class, 'hapusjob'])->name('hapusjob');
 
     Route::get('/profile-magang/{id}', [AdminController::class, 'profilemagang'])->name('profilemagang');
     Route::post('/update-status-magang', [AdminController::class, 'ubahstatusmagang'])->name('updatestatusmagang');
